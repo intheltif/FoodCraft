@@ -15,10 +15,10 @@ public class Foreman implements Runnable {
     private static final int NUM_OF_INGREDIENTS = 3;	
 	
     /** ArrayList that holds the food */
-    ArrayList<String> food;
+    private ArrayList<String> food;
 
     /** Docks class that is the shared memory between all other classes */
-    Docks dock;
+    private Docks dock;
 
     /**
      * Constructor that takes the dock that represents the shared memory
