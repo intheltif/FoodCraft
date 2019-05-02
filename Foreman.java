@@ -58,7 +58,7 @@ public class Foreman implements Runnable {
             String foodPicked;
             Random rand = new Random();
             int choice;
-            for(int i = 0; i < NUM_OF_INGREDIENTS; i++){
+            for(int i = 0; i < NUM_OF_INGREDIENTS - 1; i++){
                 choice = rand.nextInt(food.size());
                 foodPicked = food.remove(choice); //removes the ingredient from the Arraylist
                                                   // so it cannot be used again

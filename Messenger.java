@@ -62,6 +62,7 @@ public class Messenger implements Runnable {
             dock.getBolognaMutex().acquire();
 
             if (dock.getCheeseMutex().tryAcquire()) {
+                System.out.println(this.type + " messenger is waking up " + this.type + " miner");
                 dock.getBrMessengerMutex().release();
             } else {
                 dock.getBolognaMutex().release();
@@ -86,6 +87,7 @@ public class Messenger implements Runnable {
             dock.getBolognaMutex().acquire();
 
             if(dock.getBreadMutex().tryAcquire()) {
+                System.out.println(this.type + " messenger is waking up " + this.type + " miner");
                 dock.getChMessengerMutex().release();
             } else {
                 dock.getBolognaMutex().release();
@@ -111,6 +113,7 @@ public class Messenger implements Runnable {
             dock.getBreadMutex().acquire();
 
             if (dock.getCheeseMutex().tryAcquire()) {
+                System.out.println(this.type + " messenger is waking up " + this.type + " miner");
                 dock.getBgMessengerMutex().release();
             } else {
                 dock.getBreadMutex().release();

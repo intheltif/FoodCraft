@@ -40,20 +40,21 @@ public class Miners implements Runnable {
             switch (this.type) {
                 case "bread":
                     dock.getBrMessengerMutex().acquire();
+                    makeSandwiches();
                     break;
                 case "cheese":
                     dock.getChMessengerMutex().acquire();
+                    makeSandwiches();
                     break;
                 case "bologna":
                     dock.getBgMessengerMutex().acquire();
+                    makeSandwiches();
                     break;
             }
         } catch(InterruptedException ie) {
             ie.printStackTrace();
         }
 
-        makeSandwiches();
-        eatSandwiches();
     }
 
     /**
@@ -62,15 +63,17 @@ public class Miners implements Runnable {
      */
     private void makeSandwiches(){
 
+        System.out.println(this.type + " miner is making sandwiches...");
         dock.getForemanMutex().release();
 
         try{
-            Thread.sleep((ThreadLocalRandom.current().nextInt()*1000));
+            //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
+            Thread.sleep(500);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
 
-        System.out.println(this.type + " miner is making sandwiches...");
+        eatSandwiches();
 
     } // end makeSandwiches
 
@@ -80,13 +83,13 @@ public class Miners implements Runnable {
      */
     private void eatSandwiches(){
 
+        System.out.println(this.type + " miner is eating sandwiches...");
         try{
-            Thread.sleep((ThreadLocalRandom.current().nextInt()*1000));
+            //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
+            Thread.sleep(5000);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
-
-        System.out.println(this.type + " miner is eating sandwiches...");
 
     } // end eatSandwiches
 
