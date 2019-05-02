@@ -44,18 +44,22 @@ public class Foreman implements Runnable {
          * consumed.
          */
         while(!Thread.currentThread().isInterrupted()){
+            try {
+                dock.getForemanMutex().acquire();
+            } catch(InterruptedException ie) {
+                ie.printStackTrace();
+            }
 
-            dock.getForemanMutex().acquire();
             System.out.println("Foreman is awake!");
             this.food = new ArrayList<>();
             this.food.add("cheese");
             this.food.add("bread");
             this.food.add("bologna");
             String foodPicked;
-            Random rand;
+            Random rand = new Random();
             int choice;
             for(int i = 0; i < NUM_OF_INGREDIENTS; i++){
-                choice = rand.nextInt(food.length());
+                choice = rand.nextInt(food.size());
                 foodPicked = food.remove(choice); //removes the ingredient from the Arraylist
                                                   // so it cannot be used again
                 switch(foodPicked){
