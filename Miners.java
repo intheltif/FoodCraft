@@ -36,25 +36,26 @@ public class Miners implements Runnable {
      */
     @Override
     public void run() {
-        try {
-            switch (this.type) {
-                case "bread":
-                    dock.getBrMessengerMutex().acquire();
-                    makeSandwiches();
-                    break;
-                case "cheese":
-                    dock.getChMessengerMutex().acquire();
-                    makeSandwiches();
-                    break;
-                case "bologna":
-                    dock.getBgMessengerMutex().acquire();
-                    makeSandwiches();
-                    break;
+        while(!Thread.currentThread().isInterrupted()){
+            try {
+                switch (this.type) {
+                    case "bread":
+                        dock.getBrMessengerMutex().acquire();
+                        makeSandwiches();
+                        break;
+                    case "cheese":
+                        dock.getChMessengerMutex().acquire();
+                        makeSandwiches();
+                        break;
+                    case "bologna":
+                        dock.getBgMessengerMutex().acquire();
+                        makeSandwiches();
+                        break;
+                }
+            } catch(InterruptedException ie) {
+                ie.printStackTrace();
             }
-        } catch(InterruptedException ie) {
-            ie.printStackTrace();
         }
-
     }
 
     /**
