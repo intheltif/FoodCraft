@@ -68,6 +68,8 @@ public class Distribution {
      */
     private void distribute() {
 
+        Thread t;
+
         ArrayList<Miners> miners = new ArrayList<>();
         ArrayList<Messenger> messengers = new ArrayList<>();
 
@@ -103,7 +105,8 @@ public class Distribution {
 
         //Starts the each type of messenger thread.
         for (Messenger messenger : messengers) {
-            messenger.run();
+            t = new Thread(messenger);
+            t.start();
         }
 
         try {
