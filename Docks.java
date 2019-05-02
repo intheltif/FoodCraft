@@ -10,19 +10,22 @@ import java.util.concurrent.Semaphore;
  */
 public class Docks {
 
-    public static Semaphore breadMutex;
+    /** The semaphore for each ingredient type */
+    private final Semaphore breadMutex;
+    private final Semaphore cheeseMutex;
+    private final Semaphore bolognaMutex;
 
-    public static Semaphore cheeseMutex;
+    /** The semaphore for the separate ingredient type messengers */
+    private final Semaphore brMessengerMutex;
+    private final Semaphore bgMessengerMutex;
+    private final Semaphore chMessengerMutex;
 
-    public static Semaphore bolognaMutex;
-
-    public static Semaphore brMessengerMutex;
-
-    public static Semaphore bgMessengerMutex;
-    
-    public static Semaphore chMessengerMutex;
+    /** The semaphore for signaling the foreman */
+    private final Semaphore foremanMutex;
 
     public Docks() {
+
+        this.foremanMutex = new Semaphore(1);
 
         this.breadMutex   = new Semaphore(1);
         this.cheeseMutex  = new Semaphore(1);
@@ -34,5 +37,31 @@ public class Docks {
 
     } // end constructor
 
+    public Semaphore getBreadMutex() {
+        return breadMutex;
+    }
 
+    public Semaphore getCheeseMutex() {
+        return cheeseMutex;
+    }
+
+    public Semaphore getBolognaMutex() {
+        return bolognaMutex;
+    }
+
+    public Semaphore getBrMessengerMutex() {
+        return brMessengerMutex;
+    }
+
+    public Semaphore getBgMessengerMutex() {
+        return bgMessengerMutex;
+    }
+
+    public Semaphore getChMessengerMutex() {
+        return chMessengerMutex;
+    }
+
+    public Semaphore getForemanMutex() {
+        return foremanMutex;
+    }
 } // end Docks
