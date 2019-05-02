@@ -47,7 +47,7 @@ public class Foreman implements Runnable {
             try {
                 dock.getForemanMutex().acquire();
             } catch(InterruptedException ie) {
-                ie.printStackTrace();
+                return;
             }
 
             System.out.println("Foreman is awake!");
@@ -82,6 +82,7 @@ public class Foreman implements Runnable {
             }
             System.out.println("Foreman is done! Time for a break");
         }
+        return;
     }
 }
 

@@ -53,9 +53,10 @@ public class Miners implements Runnable {
                         break;
                 }
             } catch(InterruptedException ie) {
-                ie.printStackTrace();
+                return;
             }
         }
+        return;
     }
 
     /**
@@ -71,7 +72,7 @@ public class Miners implements Runnable {
             //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
             Thread.sleep(500);
         } catch (InterruptedException ie) {
-            ie.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         eatSandwiches();
@@ -89,7 +90,7 @@ public class Miners implements Runnable {
             //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
             Thread.sleep(500);
         } catch (InterruptedException ie) {
-            ie.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
     } // end eatSandwiches

@@ -30,11 +30,11 @@ public class Distribution {
         }
 
         timeToRun = (Integer.parseInt(args[0]) * 1000);
-
-        if(args[1].toLowerCase() == "t") {
+        System.out.println(args[1]);
+        if(args[1].toLowerCase().equals("t")) {
             
             //TODO print output to log.txt
-            
+            System.out.println(args[1]); 
             //Time must be positive to write to file.
             if(timeToRun <= 0) {
                 System.out.println("Time must be positive to output to a file");
@@ -111,16 +111,27 @@ public class Distribution {
             threads.add(t);
             t.start();
         }
-
-
+        System.out.println("Time to run: " + timeToRun);
         try {
+            if(timeToRun == 0){
+                for(;;){
+                    Thread.currentThread().sleep(Long.MAX_VALUE);
+                }
+            }
+            else{
+                Thread.currentThread().sleep(timeToRun);
+            }
+            for(Thread thread: threads){
+                    thread.interrupt();
+            }
             for(Thread thread : threads) {
-                System.out.println(timeToRun);
-                thread.join(timeToRun);
+                thread.join();
             }
         } catch(InterruptedException ie) {
-            ie.printStackTrace();
+            return;
         }
+
+        System.exit(0);
 
     }
 
