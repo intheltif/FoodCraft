@@ -29,7 +29,7 @@ public class Distribution {
             System.exit(1);
         }
 
-        timeToRun = Integer.parseInt(args[0]);
+        timeToRun = (Integer.parseInt(args[0]) * 1000);
 
         if(args[1].toLowerCase() == "t") {
             
@@ -101,18 +101,23 @@ public class Distribution {
         //Starts the each type of miner thread.
         for (Miners miner : miners) {
             t = new Thread(miner);
+            threads.add(t);
             t.start();
         }
 
         //Starts the each type of messenger thread.
         for (Messenger messenger : messengers) {
             t = new Thread(messenger);
+            threads.add(t);
             t.start();
         }
 
 
         try {
-
+            for(Thread thread : threads) {
+                System.out.println(timeToRun);
+                thread.join(timeToRun);
+            }
         } catch(InterruptedException ie) {
             ie.printStackTrace();
         }
