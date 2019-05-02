@@ -67,9 +67,7 @@ public class Distribution {
      * What actually runs our program.
      */
     private void distribute() {
-
         Thread t;
-
         ArrayList<Miners> miners = new ArrayList<>();
         ArrayList<Messenger> messengers = new ArrayList<>();
 
@@ -96,11 +94,12 @@ public class Distribution {
         messengers.add(bolognaMessenger);
 
         //Starts the foreman thread.
-        foreman.run();
-
+        t = new Thread(foreman);
+        t.start();
         //Starts the each type of miner thread.
         for (Miners miner : miners) {
-            miner.run();
+            t = new Thread(miner);
+            t.start();
         }
 
         //Starts the each type of messenger thread.
@@ -108,6 +107,7 @@ public class Distribution {
             t = new Thread(messenger);
             t.start();
         }
+
 
         try {
             Thread.currentThread().join(timeToRun);

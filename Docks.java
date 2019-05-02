@@ -26,14 +26,29 @@ public class Docks {
     public Docks() {
 
         this.foremanMutex = new Semaphore(1);
-
+        
         this.breadMutex   = new Semaphore(1);
         this.cheeseMutex  = new Semaphore(1);
         this.bolognaMutex = new Semaphore(1);
+        
 
         this.brMessengerMutex = new Semaphore(1);
         this.bgMessengerMutex = new Semaphore(1);
         this.chMessengerMutex = new Semaphore(1);
+        
+        try{
+            this.breadMutex.acquire();
+            this.cheeseMutex.acquire();
+            this.bolognaMutex.acquire();
+
+
+            this.brMessengerMutex.acquire();
+            this.bgMessengerMutex.acquire();
+            this.chMessengerMutex.acquire();
+        }
+        catch(InterruptedException ie){
+            System.out.println(ie.getMessage());
+        }
 
     } // end constructor
 
