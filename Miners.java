@@ -1,5 +1,13 @@
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * The miner that mines a certain type of food.
+ *
+ * @author Evert Ball
+ * @author Donny Queen
+ *
+ * @version 05/03/2019
+ */
 public class Miners implements Runnable {
 
     /** The type of miner that this is */
@@ -20,7 +28,11 @@ public class Miners implements Runnable {
     }
 
     /**
+     * Starts making sandwiches if we are able to acquire the ingredients
+     * needed.
      *
+     * Based on the type of miner we are, we ask our messenger if we can
+     * have our required ingredients. If we cannot, we wait until we can.
      */
     @Override
     public void run() {
