@@ -9,12 +9,10 @@
 public class Messenger {
     
     /**
-     * Constructs a messenger object that holds the semaphores.
-     * TODO Might need to by synchronized and static?
+     * Constructs a messenger object that sends and receives signals.
      */
     public Messenger() {
 
-        //Create semaphores
 
     } // end constructor
 
