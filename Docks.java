@@ -10,17 +10,17 @@ import java.util.concurrent.Semaphore;
  */
 public class Docks {
 
-    Semaphore breadMutex;
+    public static Semaphore breadMutex;
 
-    Semaphore cheeseMutex;
+    public static Semaphore cheeseMutex;
 
-    Semaphore bolognaMutex;
+    public static Semaphore bolognaMutex;
 
-    Semaphore brMessengerMutex;
+    public static Semaphore brMessengerMutex;
 
-    Semaphore bgMessengerMutex;
+    public static Semaphore bgMessengerMutex;
     
-    Semaphore chMessengerMutex;
+    public static Semaphore chMessengerMutex;
 
     public Docks() {
 
@@ -33,7 +33,6 @@ public class Docks {
         this.chMessengerMutex = new Semaphore(1);
 
     } // end constructor
-
 
 
 } // end Docks
