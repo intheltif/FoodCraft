@@ -1,11 +1,28 @@
-# Description
+# FoodCraft
 
-Some description of the project here.
+## Description
+
+This is the ***FoodCraft*** project of Dr. Kreahling's CS370 course.
+
+    When running the program the arguments to provide are:
+
+        1. The time the program should run.
+        2. T if output should be output to a log file, F otherwise.
 
 ## Usage
 
-Explain Usage Here.
+*To Compile:*
 
-#Known Issues
+```bash
+javac *.java
+```
 
-There are currently no known issues.
+*To Run:*
+
+```bash
+java Distribution <time_to_run> <T|F>
+```
+
+## Known Issues
+
+There are currently no known issues in our program.
