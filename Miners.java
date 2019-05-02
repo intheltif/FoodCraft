@@ -86,7 +86,7 @@ public class Miners implements Runnable {
         System.out.println(this.type + " miner is eating sandwiches...");
         try{
             //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
-            Thread.sleep(5000);
+            Thread.sleep(500);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
