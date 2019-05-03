@@ -70,7 +70,8 @@ public class Messenger implements Runnable {
                 dock.getBolognaMutex().release();
             }
         } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
+//            Thread.currentThread().interrupt();
+           System.out.println(ie.getMessage());
         } // end try-catch
     } // end doBread
 
@@ -96,7 +97,8 @@ public class Messenger implements Runnable {
             }
 
         } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
+  //          Thread.currentThread().interrupt();
+            System.out.println(ie.getMessage());
         } // end try-catch
     } // end doCheese
 
@@ -121,7 +123,8 @@ public class Messenger implements Runnable {
                 dock.getBreadMutex().release();
             }
         } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
+    //        Thread.currentThread().interrupt();
+            System.out.println(ie.getMessage());
         } // end try-catch
     } // end doBologna
 

@@ -9,7 +9,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * @version 05/03/2019
  */
 public class Miners implements Runnable {
-
+    
+    /** How long a miner can make sandwhich/eat */
+    private final static int MAX_TIME = 5000;
     /** The type of miner that this is */
     private String type;
 
@@ -69,10 +71,10 @@ public class Miners implements Runnable {
         dock.getForemanMutex().release();
 
         try{
-            //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
-            Thread.sleep(500);
+            Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt(MAX_TIME))));
+           // Thread.sleep(500);
         } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
+            System.out.println(ie.getMessage());
         }
 
         eatSandwiches();
@@ -87,10 +89,10 @@ public class Miners implements Runnable {
 
         System.out.println(this.type + " miner is eating sandwiches...");
         try{
-            //Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt()*1000)));
-            Thread.sleep(500);
+            Thread.sleep(Math.abs((ThreadLocalRandom.current().nextInt(MAX_TIME))));
+            //Thread.sleep(500);
         } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
+           System.out.println(ie.getMessage());
         }
 
     } // end eatSandwiches
