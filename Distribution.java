@@ -69,7 +69,6 @@ public class Distribution {
         Thread t;
         ArrayList<Miners> miners = new ArrayList<>();
         ArrayList<Messenger> messengers = new ArrayList<>();
-        ArrayList<Thread> threads = new ArrayList<>();
 
         //Create the dock and the foreman.
         Docks dock = new Docks();
@@ -97,20 +96,17 @@ public class Distribution {
 
         //Starts the foreman thread.
         t = new Thread(foreman);
-        threads.add(t);
         t.start();
 
         //Starts the each type of miner thread.
         for (Miners miner : miners) {
             t = new Thread(miner);
-            threads.add(t);
             t.start();
         }
 
         //Starts the each type of messenger thread.
         for (Messenger messenger : messengers) {
             t = new Thread(messenger);
-            threads.add(t);
             t.start();
         }
 
