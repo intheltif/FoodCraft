@@ -36,8 +36,10 @@ public class Distribution {
                 System.out.println("Time must be positive to output to a file");
                 System.exit(1);
             } else {
+                //PrintStream that we are going to use to print to a log file.
                 PrintStream out;
                 try {
+                    //Create the log file and set stdout to that file.
                     out = new PrintStream("./log.txt");
                     System.setOut(out);
                 } catch (FileNotFoundException fnfe) {
@@ -53,6 +55,7 @@ public class Distribution {
             }
         } // end outter-most if-else
 
+        //create instance of this class and call its go method.
         Distribution distributor = new Distribution();
         distributor.distribute();
 
@@ -77,6 +80,7 @@ public class Distribution {
         Miners breadMiner = new Miners("bread", dock);
         Miners bolognaMiner = new Miners("bologna", dock);
 
+        // Add the miners to the ArrayList of miners
         miners.add(cheeseMiner);
         miners.add(breadMiner);
         miners.add(bolognaMiner);
@@ -86,6 +90,7 @@ public class Distribution {
         Messenger breadMessenger = new Messenger("bread", dock);
         Messenger bolognaMessenger = new Messenger("bologna", dock);
 
+        // Add the messengers to the ArrayList of messengers
         messengers.add(cheeseMessenger);
         messengers.add(breadMessenger);
         messengers.add(bolognaMessenger);
@@ -94,6 +99,7 @@ public class Distribution {
         t = new Thread(foreman);
         threads.add(t);
         t.start();
+
         //Starts the each type of miner thread.
         for (Miners miner : miners) {
             t = new Thread(miner);
@@ -107,6 +113,8 @@ public class Distribution {
             threads.add(t);
             t.start();
         }
+
+        // Joins all threads to this thread and quits threads once time runs out (if not 0)
         try{
             Thread.currentThread().join(timeToRun);
         }
